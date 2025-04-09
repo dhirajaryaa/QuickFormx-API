@@ -1,0 +1,24 @@
+{
+  "name": "quickformx-api",
+  "version": "1.0.0",
+  "description": "QuickFormX REST API - A secure, scalable form builder submission API",
+  "main": "src/index.js",
+  "type": "module",
+  "scripts": {
+    "start": "node src/index.js",
+    "dev": "nodemon src/index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Dhiraj Arya",
+  "license": "MIT",
+  "keywords": ["form-builder", "REST API", "QuickFormX", "express", "mongo", "submission-api"],
+  "dependencies": {
+    "express": "^4.18.2",
+    "mongoose": "^7.0.3",
+    "dotenv": "^16.0.3",
+    "cors": "^2.8.5"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.1"
+  }
+}
