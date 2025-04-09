@@ -19,5 +19,7 @@ export const generateAccessAndRefreshToken = async function (user_id) {
         _id: user._id
     }, REFRESH_TOKEN_SECRET, { expiresIn: REFRESH_TOKEN_EXPIRES_IN });
 
+    user.refreshToken = refreshToken;
+    await user.save()
     return { accessToken, refreshToken }
 }
