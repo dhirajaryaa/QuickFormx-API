@@ -19,4 +19,8 @@ app.use(cors({
     credentials: NODE_ENV === "production" ? true : false
 }));
 
+//! setup error handler 
+import {ErrorHandler} from "./middlewares/error.middleware.js";
+app.use(ErrorHandler);
+
 export default app;
