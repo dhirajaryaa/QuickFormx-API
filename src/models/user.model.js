@@ -5,7 +5,7 @@ const userSchema = new Schema({
     name: {
         type: String,
         trim: true,
-        minLength: [4, "Name must be at least 6 characters long"],
+        minLength: [6, "Name must be at least 6 characters long"],
         required: [true, "Name is Required"],
     },
     email: {
@@ -15,6 +15,13 @@ const userSchema = new Schema({
         trim: true,
         match: [/\S+@\S+\.\S+/, "Invalid email format"],
     },
+    username: {
+        type: String,
+        trim: true,
+        unique: true,
+        minLength: [6, "username must be at least 6 characters long"],
+        required: [true, "username is Required"],
+    },
     password: {
         type: String,
         required: [true, "Password is required"],
@@ -23,7 +30,8 @@ const userSchema = new Schema({
     apiKey: {
         type: String,
         unique: true,
-        trim: true
+        trim: true,
+        default: ""
     },
     refreshToken: {
         type: String,
