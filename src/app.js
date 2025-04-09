@@ -4,12 +4,12 @@ import { CORS_METHODS, CORS_ORIGIN, NODE_ENV } from "./config/env.js";
 
 const app = express();
 
-//! =========== setup middlwares ============
+//! =========== setup middlewares ============
 
-// allow request in json fromat 
+// allow request in json format 
 app.use(express.json());
 
-// url encodeing allow 
+// url encoding allow 
 app.use(express.urlencoded());
 
 // cors configure 
@@ -19,8 +19,12 @@ app.use(cors({
     credentials: NODE_ENV === "production" ? true : false
 }));
 
+//? setup routes
+import { router as authRouter } from "./routers/auth.routes.js";
+app.use("/api/v1/auth", authRouter);
+
 //! setup error handler 
-import {ErrorHandler} from "./middlewares/error.middleware.js";
+import { ErrorHandler } from "./middlewares/error.middleware.js";
 app.use(ErrorHandler);
 
 export default app;
