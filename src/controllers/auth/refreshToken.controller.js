@@ -20,7 +20,7 @@ export const tokenRefresh = AsyncHandler(async (req, res) => {
     const { accessToken, refreshToken } = await generateAccessAndRefreshToken(decodedToken._id);
     // return res 
     return res
-        .status(201)
+        .status(200)
         .cookie("accessToken", accessToken, cookieOptions)
         .cookie("refreshToken", refreshToken, cookieOptions)
         .json(new ApiResponse(200, "token refresh successful", { accessToken, refreshToken }));
