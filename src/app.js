@@ -1,5 +1,6 @@
 import express from "express";
 import cors from "cors";
+import cookieParser from "cookie-parser";
 import { CORS_METHODS, CORS_ORIGIN, NODE_ENV } from "./config/env.js";
 
 const app = express();
@@ -18,6 +19,9 @@ app.use(cors({
     methods: CORS_METHODS,
     credentials: NODE_ENV === "production" ? true : false
 }));
+
+// cookie parser 
+app.use(cookieParser());
 
 //? setup routes
 import { router as authRouter } from "./routers/auth.routes.js";
