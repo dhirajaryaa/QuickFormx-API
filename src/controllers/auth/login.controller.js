@@ -35,8 +35,8 @@ export const loginUser = AsyncHandler(async (req, res) => {
     const user = await User.findById(userExist._id).select("-password -refreshToken -updatedAt");
     // return res 
     return res
-        .status(201)
+        .status(200)
         .cookie("accessToken", accessToken, cookieOptions)
         .cookie("refreshToken", refreshToken, cookieOptions)
-        .json(new ApiResponse(201, "user login successful", { user, accessToken, refreshToken }));
+        .json(new ApiResponse(200, "user login successful", { user, accessToken, refreshToken }));
 })
