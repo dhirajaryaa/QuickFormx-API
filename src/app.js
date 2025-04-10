@@ -30,7 +30,9 @@ app.get("/",(req,res)=>{
 
 //? setup routes
 import { router as authRouter } from "./routers/auth.routes.js";
+import { router as userRouter } from "./routers/user.routes.js";
 app.use("/api/v1/auth", authRouter);
+app.use("/api/v1/users", userRouter);
 
 //! setup error handler 
 import { ErrorHandler } from "./middlewares/error.middleware.js";
