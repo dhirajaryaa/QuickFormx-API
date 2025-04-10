@@ -4,7 +4,8 @@ import { ACCESS_TOKEN_SECRET } from "../config/env.js";
 import jwt from "jsonwebtoken";
 
 export const authorizedUser = AsyncHandler(async (req, res, next) => {
-    const incomingToken = req.cookies?.accessToken || req.headers.authorization?.replace("Bearer ", "");
+    const incomingToken = req.cookies.accessToken ||
+        req.headers.authorization?.replace("Bearer ", "");
     // check token present or not 
     if (!incomingToken) {
         throw new ApiError(401, "Unauthorized Access, Access token is missing or invalid.");
