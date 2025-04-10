@@ -24,15 +24,20 @@ app.use(cors({
 app.use(cookieParser());
 
 // setup default route 
-app.get("/",(req,res)=>{
+app.get("/", (req, res) => {
     res.send("<h1>Welcome on QuickFormx.</h1>")
 })
 
 //? setup routes
 import { router as authRouter } from "./routers/auth.routes.js";
 import { router as userRouter } from "./routers/user.routes.js";
+import { router as formRouter } from "./routers/form.routes.js";
+// auth routes 
 app.use("/api/v1/auth", authRouter);
+// user routes 
 app.use("/api/v1/users", userRouter);
+// form routes 
+app.use("/api/v1/forms", formRouter);
 
 //! setup error handler 
 import { ErrorHandler } from "./middlewares/error.middleware.js";
