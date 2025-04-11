@@ -3,7 +3,7 @@ import { ApiError } from "../../utils/apiError.js";
 import { ApiResponse } from "../../utils/apiResponse.js";
 import { generateAccessAndRefreshToken } from "../../utils/generateTokens.js";
 import { User } from "../../models/user.model.js"
-import { loginUserSchema } from "../../validations/loginUser.schema.js"
+import { loginUserSchema } from "../../validations/users/loginUser.schema.js"
 import { cookieOptions } from "../../config/env.js"
 import bcrypt from "bcryptjs";
 

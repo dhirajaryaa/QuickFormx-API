@@ -2,7 +2,7 @@ import { AsyncHandler } from "../../utils/asyncHandler.js";
 import { ApiError } from "../../utils/apiError.js";
 import { ApiResponse } from "../../utils/apiResponse.js";
 import { generateUsername } from "../../utils/generateUsername.js";
-import { registerUserSchema } from '../../validations/registerUser.schema.js'
+import { registerUserSchema } from '../../validations/users/registerUser.schema.js'
 import { User } from "../../models/user.model.js"
 import bcrypt from "bcryptjs";
 import crypto from 'crypto';
