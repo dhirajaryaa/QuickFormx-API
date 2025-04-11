@@ -34,9 +34,15 @@ export const formSubmission = AsyncHandler(async (req, res) => {
             ([field, messages]) => messages?.map(msg => `${field}: ${msg}`) || []);
         throw new ApiError(400, errorMessages.join(", "));
     };
+    // check duplicate submission 
+    const duplicateData = await Submission.findOne({userId:req.user?._id,data:req.body})
+    if(duplicateData){
+        throw new ApiError(400, "Duplicate submission detected. You have already submitted this form with same details");
+    };
     // save submission in db 
     const newSubmission = await Submission.create({
         formId: formData._id,
+        userId: req.user?._id,
         clientIp: req?.clientIp,
         data: { ...req.body }
     });

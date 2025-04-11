@@ -6,6 +6,11 @@ const submissionSchema = new Schema({
         ref: "Form",
         required: [true, "Form ID is required"]
     },
+    userId: {
+        type: Schema.Types.ObjectId,
+        ref: "User",
+        required: [true, "User ID is required"]
+    },
     data: {
         type: Schema.Types.Mixed,
         required: [true, "Submission data is required"]
