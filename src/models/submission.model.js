@@ -7,7 +7,7 @@ const submissionSchema = new Schema({
         required: [true, "Form ID is required"]
     },
     data: {
-        type: String,
+        type: Schema.Types.Mixed,
         required: [true, "Submission data is required"]
     },
     submitAt: {
