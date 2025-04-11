@@ -32,12 +32,15 @@ app.get("/", (req, res) => {
 import { router as authRouter } from "./routers/auth.routes.js";
 import { router as userRouter } from "./routers/user.routes.js";
 import { router as formRouter } from "./routers/form.routes.js";
+import { router as submissionRouter } from "./routers/submission.routes.js";
 // auth routes 
 app.use("/api/v1/auth", authRouter);
 // user routes 
 app.use("/api/v1/users", userRouter);
 // form routes 
 app.use("/api/v1/forms", formRouter);
+// submission routes 
+app.use("/api/v1/forms", submissionRouter);
 
 //! setup error handler 
 import { ErrorHandler } from "./middlewares/error.middleware.js";
