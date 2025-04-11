@@ -2,7 +2,7 @@ import { AsyncHandler } from "../../utils/asyncHandler.js";
 import { ApiError } from "../../utils/apiError.js";
 import { ApiResponse } from "../../utils/apiResponse.js";
 import { User } from "../../models/user.model.js"
-import { profileUpdateSchema } from "../../validations/profileUpdate.schema.js"
+import { profileUpdateSchema } from "../../validations/users/profileUpdate.schema.js"
 
 export const updateUserProfile = AsyncHandler(async (req, res) => {
     const { username, name } = req.body;
