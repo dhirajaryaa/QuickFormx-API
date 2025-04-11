@@ -8,15 +8,13 @@ import { Form } from "../../models/form.model.js";
 
 export const updateForm = AsyncHandler(async (req, res) => {
     const { id: formId } = req.params;
-
-    // ✅ Step 1: Validate formId (MongoDB _id)
+    // Validate formId (MongoDB _id)
     const formIdResult = getFormSchema.safeParse(formId);
     if (!formIdResult.success) {
         const msg = formIdResult.error.issues.map((i) => i.message).join(', ');
         throw new ApiError(400, `Invalid form ID: ${msg}`);
     }
-
-    // ✅ Step 2: Validate form data with partial schema
+    // Validate form data with partial schema
     const result = createFormSchema.partial().safeParse(req.body);
     if (!result.success) {
         const msg = result.error.issues.map((i) => {
@@ -26,22 +24,19 @@ export const updateForm = AsyncHandler(async (req, res) => {
         }).join(', ');
         throw new ApiError(400, msg);
     }
-
     const { title, description, fields } = result.data;
-
-    // ✅ Step 3: Find form
+    // Find form
     const formData = await Form.findById(new mongoose.Types.ObjectId(formId));
     if (!formData) {
         throw new ApiError(404, "Form not found");
     }
-
-    // ✅ Step 4: Update form
+    // Update form
     formData.title = title ?? formData.title;
     formData.description = description ?? formData.description;
     formData.fields = fields ?? formData.fields;
-
+    // update form 
     const updatedForm = await formData.save({ validateBeforeSave: false });
-
+    // return res 
     return res
         .status(200)
         .json(new ApiResponse(200, "Form updated successfully", updatedForm));
