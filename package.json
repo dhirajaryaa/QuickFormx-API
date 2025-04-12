@@ -11,12 +11,24 @@
   },
   "author": "Dhiraj Arya",
   "license": "MIT",
-  "keywords": ["form-builder", "REST API", "QuickFormX", "express", "mongo", "submission-api"],
+  "keywords": [
+    "form-builder",
+    "REST API",
+    "QuickFormX",
+    "express",
+    "mongo",
+    "submission-api"
+  ],
   "dependencies": {
-    "express": "^4.18.2",
-    "mongoose": "^7.0.3",
+    "bcryptjs": "^3.0.2",
+    "cookie-parser": "^1.4.7",
+    "cors": "^2.8.5",
     "dotenv": "^16.0.3",
-    "cors": "^2.8.5"
+    "express": "^4.18.2",
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^7.0.3",
+    "request-ip": "^3.3.0",
+    "zod": "^3.24.2"
   },
   "devDependencies": {
     "nodemon": "^3.0.1"
