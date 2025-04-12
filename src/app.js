@@ -11,7 +11,7 @@ const app = express();
 app.use(express.json());
 
 // url encoding allow 
-app.use(express.urlencoded());
+app.use(express.urlencoded({extended:true}));
 
 // cors configure 
 app.use(cors({
