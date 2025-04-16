@@ -1,19 +1,17 @@
 import { z } from "zod";
 
 export const fieldsSchema = z.object({
+    id: z.number().optional(),
     label: z
         .string()
         .min(3, "Label must be at least 3 characters long")
         .max(60, "Label can't be more than 60 characters"),
     name: z
-        .string()
-        .min(3, "Name must be at least 3 characters long"),
+        .string(),
     type: z
-        .enum(["text", "textarea", "email", "number", "radio", "checkbox", "select", "date", "file"]),
+        .enum(["text", "textarea", "email", "number", "radio", "checkbox", "select", "date", "file"],{message:"Invalid Type"}),
     placeholder: z
         .string()
-        .min(3, "Placeholder must be at least 3 characters long")
-        .max(60, "Placeholder can't be more than 60 characters")
         .optional(),
     required: z.boolean().optional(),
     options: z.array(z.string()).optional()
@@ -26,8 +24,6 @@ export const createFormSchema = z.object({
         .max(60, "Title can't be more than 60 characters"),
     description: z
         .string()
-        .min(6, "Description must be at least 6 characters long")
-        .max(300, "Description can't be more than 300 characters")
         .optional(),
     fields: z
         .array(fieldsSchema)
