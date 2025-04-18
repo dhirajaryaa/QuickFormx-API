@@ -16,8 +16,8 @@ app.use(express.urlencoded({extended:true}));
 // cors configure 
 app.use(cors({
     origin: CORS_ORIGIN,
-    methods: CORS_METHODS,
-    credentials: NODE_ENV === "production" ? true : false
+    methods: CORS_METHODS.split(","),
+    credentials: true
 }));
 
 // cookie parser 

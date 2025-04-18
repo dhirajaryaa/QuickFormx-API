@@ -11,10 +11,9 @@ export const ApiKeyChecker = AsyncHandler(async (req, res, next) => {
     if (!apiCheck.success) {
         throw new ApiError(400, apiCheck.error.issues[0].message);
     };
-    // hash api key 
-    const hashApiKey = crypto.createHash("sha256").update(incomingApiKey).digest("hex");
+
     // match api key to db 
-    const validUser = await User.findOne({ apiKey: hashApiKey });
+    const validUser = await User.findOne({ apiKey: incomingApiKey });
     if (!validUser) {
         throw new ApiError(403, "Unauthorized : Invalid API Key");
     }

@@ -26,19 +26,18 @@ export const registerUser = AsyncHandler(async (req, res) => {
     const hashedPassword = await bcrypt.hash(password, 12);
     // generate api key 
     const rowApiKey = crypto.randomBytes(32).toString("hex");
-    // hash api key for security 
-    const hashApiKey = crypto.createHash("sha256").update(rowApiKey).digest("hex")
+
     // save new user in db 
     const newUser = await User.create({
         name,
         email,
         username: generateUsername(name),
         password: hashedPassword,
-        apiKey: hashApiKey
+        apiKey: rowApiKey
     });
     // remove sensitive information
     const user = await User.findById(newUser._id).select("-password -apiKey -refreshToken -updatedAt");
 
     // return response 
-    return res.status(201).json(new ApiResponse(201, "user register successful", {user,apiKey:rowApiKey}));
+    return res.status(201).json(new ApiResponse(201, "user register successful", user));
 });
